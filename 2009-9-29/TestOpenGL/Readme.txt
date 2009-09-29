@@ -18,14 +18,15 @@
 //  	Blog	: blog.csdn.net/vagrxie
 //  	E-mail	: JTianLing@GMail.com
 //  	QQ	: 375454
-//  
+//
 //  欢迎大家在上述网页或者博客上留言发帖指出其中的bug或可以改进之处
-//
-//  本工程是一个Win32 OpenGL 动画程序模板 
-//	从Andre LaMothe 的T3D Game Console改过来
-//
-//  对应的博客文章是《Win32 OpenGL 编程（1）Win32下的OpenGL编程必须步骤》
-//  http://blog.csdn.net/vagrxie/archive/2009/09/28/4602961.aspx
+//  
+//  本工程从《OpenGL 编程指南》（《OpenGL Programming Guide》）的示例代码mvarray.c改过来的。其中的宏
+//  GL_VERSION_1_3是由glew定义用来表示支持OpenGL1.3版本，其中的函数glMultiDrawElementsEXT就是Windows
+//  本身不支持，用了glew后才能使用的OpenGL扩展接口（首先要显卡支持啊）。glut的使用那就更不用说了。
+//  提供的目的是为了检验glew和glut的安装
+//  对应的博客文章为《Win32 OpenGL编程(2) 寻找缺失的OpenGL函数 》
+//  http://blog.csdn.net/vagrxie/archive/2009/09/29/4617556.aspx
 //
 //  本工程用Google Project Host保存，用Mercurial管理
 //  Mercurial的使用方法可以参考

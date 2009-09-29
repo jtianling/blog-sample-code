@@ -21,8 +21,7 @@
 //  
 //  欢迎大家在上述网页或者博客上留言发帖指出其中的bug或可以改进之处
 //
-//  本工程是一个Win32 OpenGL 动画程序模板 
-//	从Andre LaMothe 的T3D Game Console改过来
+//  本工程使用在Win32下用OpenGL实现的一个旋转的矩型的动画
 //
 //  对应的博客文章是《Win32 OpenGL 编程（1）Win32下的OpenGL编程必须步骤》
 //  http://blog.csdn.net/vagrxie/archive/2009/09/28/4602961.aspx
