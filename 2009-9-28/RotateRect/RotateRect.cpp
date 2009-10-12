@@ -1,31 +1,45 @@
 /***********************************************************************
-//
-//  ��Ȩ����(C) 2008 ��������
-//  Copyright (C) 2008 JTianLing
-//
-//  *********************************************************************
-//  ��һ������������������������������������������ GNU ͨ�ù�������
-//  ֤�������޸ĺ����·�����һ���򡣻���������֤�ĵڶ��棬���ߣ��������ѡ
-//  �����κθ��µİ汾��
-//  ������һ�����Ŀ����ϣ�������ã���û���κε���������û���ʺ��ض�Ŀ
-//  �ĵ������ĵ���������ϸ���������� GNU ͨ�ù�������֤��
-//  ��Ӧ���Ѿ��ͳ���һ���յ�һ�� GNU ͨ�ù�������֤�ĸ����������û�У�
-//	д�Ÿ���
-//    The Free Software Foundation, Inc.,  675  Mass Ave,  Cambridge,
-//    MA02139,  USA
-// *********************************************************************
-//    ��ӭ�����������ҳ����������˵�����۸�������BUG�Ϳ��ԸĽ�֮��
-//
-//  	Webs	: groups/google.com/group/jiutianfile
-//  	Blog	: blog.csdn.net/vagrxie
-//  	E-mail	: JTianLing@GMail.com
-//  	QQ	: 375454
-// *********************************************************************
-//	�ļ���Ϣ��
-//	��������:	09-09-28
-//	�ļ���: 	RotateRect.cpp
-//	�ļ�˵��:	һ����win32����OpenGLʵ�ֵ���ת�ľ���
-// *********************************************************************/
+
+  版权所有(C) 2009 九天雁翎
+  Copyright (C) 2009 JTianLing
+
+  *********************************************************************
+  这一程序是自由软件，你可以遵照自由软件基金会出版的 GNU 通用公共许可
+  证条款来修改和重新发布这一程序。或者用许可证的第二版，或者（根据你的选
+  择）用任何更新的版本。
+  发布这一程序的目的是希望它有用，但没有任何担保。甚至没有适合特定目
+  的的隐含的担保。更详细的情况请参阅 GNU 通用公共许可证。
+  你应该已经和程序一起收到一份 GNU 通用公共许可证的副本。如果还没有，
+	写信给：
+    The Free Software Foundation, Inc.,  675  Mass Ave,  Cambridge,
+    MA02139,  USA
+ *********************************************************************
+    欢迎大家在下述网页发帖或来信说明讨论该软件的BUG和可以改进之处
+
+  	Webs	: groups.google.com/group/jiutianfile
+  	Blog	: blog.csdn.net/vagrxie
+  	E-mail	: JTianLing@GMail.com
+  	QQ	: 375454
+  
+ *********************************************************************
+
+  本工程是用OpenGL在Win32下实现的旋转的矩型的动画程序
+  用Visual Studio 2008 SP1管理工程。
+	
+  对应的博客文章是《Win32 OpenGL 编程（1）Win32下的OpenGL编程必须步骤》
+  http://blog.csdn.net/vagrxie/archive/2009/09/28/4602961.aspx
+
+  本工程用Google Project Host保存，用Mercurial管理
+  Mercurial的使用方法可以参考
+  http://blog.csdn.net/vagrxie/archive/2009/09/25/4593687.aspx
+
+ *******************************************************************/
+/*********************************************************************
+ 文件信息：
+ 创建日期:	09-09-28
+ 文件名: 	RotateRect.cpp
+ 文件说明:	本文件是用OpenGL在Win32下实现的旋转的矩型的动画程序主文件
+ *********************************************************************/
 // INCLUDES ///////////////////////////////////////////////
 #define WIN32_LEAN_AND_MEAN  // just say no to MFC
 
@@ -45,11 +59,11 @@
 #include <io.h>
 #include <fcntl.h>
 
-// OpenGL��Ҫ��ͷ�ļ�
+// OpenGL需要的头文件
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-//�����������ʱ����Ҫ���õ�OpenGL�����,�򻯹�������
+//定义程序链接时所需要调用的OpenGL程序库,简化工程配置
 #pragma comment( lib, "opengl32.lib" ) 
 #pragma comment( lib, "glu32.lib" )  
 
@@ -64,17 +78,17 @@
 #define KEYUP(vk_code)   ((GetAsyncKeyState(vk_code) & 0x8000) ? 0 : 1)
 
 // GLOBALS ////////////////////////////////////////////////
-HWND      ghWnd; // ���ھ��
-HINSTANCE ghInstance; // ����ʵ�����
-HDC ghDC;					// GDI�豸�������
-HGLRC ghRC;           // ��Ⱦ���������
+HWND      ghWnd; // 窗口句柄
+HINSTANCE ghInstance; // 程序实例句柄
+HDC ghDC;					// GDI设备环境句柄
+HGLRC ghRC;           // 渲染器环境句柄
 
 #define FRAME_PER_SECOND (60)
 #define TIME_IN_FRAME (1000/FRAME_PER_SECOND)
 #define WIDTH (800)
 #define HEIGHT (600)
 
-//�����OpenGL����
+//激活创建OpenGL窗口
 void EnableOpenGL()
 {
 	PIXELFORMATDESCRIPTOR pfd;
@@ -84,27 +98,27 @@ void EnableOpenGL()
 
 	ZeroMemory( &pfd, sizeof( pfd ) );
 	pfd.nSize = sizeof( pfd );  
-	pfd.nVersion = 1;      //�汾��һ����Ϊ1
+	pfd.nVersion = 1;      //版本，一般设为1
 
-	//һ��������ػ������Եı�־λ
+	//一组表明象素缓冲特性的标志位
 	pfd.dwFlags =   PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-	pfd.iPixelType = PFD_TYPE_RGBA;   //����������������RGBA������ɫ����;
-	pfd.cColorBits = 32;     //ÿ����ɫ����������ɫλƽ�����Ŀ������ɫ������ʽ�ǻ�������С
+	pfd.iPixelType = PFD_TYPE_RGBA;   //明象素数据类型是RGBA还是颜色索引;
+	pfd.cColorBits = 32;     //每个颜色缓冲区中颜色位平面的数目，对颜色索引方式是缓冲区大小
 	pfd.cDepthBits = 16;
-	pfd.iLayerType = PFD_MAIN_PLANE; //�����ԣ�Ϊ��һ���Զ�������
+	pfd.iLayerType = PFD_MAIN_PLANE; //被忽略，为了一致性而包含的
 
-	iFormat = ChoosePixelFormat( ghDC, &pfd );//ѡ��һ�����ظ�ʽ
+	iFormat = ChoosePixelFormat( ghDC, &pfd );//选择一个像素格式
 
-	SetPixelFormat( ghDC, iFormat, &pfd ); //���õ�DC��
+	SetPixelFormat( ghDC, iFormat, &pfd ); //设置到DC中
 
-	ghRC = wglCreateContext( ghDC );    //������ͼ������
-	wglMakeCurrent( ghDC, ghRC );     //ʹ֮��Ϊ��ǰ��ͼ������
+	ghRC = wglCreateContext( ghDC );    //创建绘图描述表
+	wglMakeCurrent( ghDC, ghRC );     //使之成为当前绘图描述表
 }
 
-//OpenGL��ʼ����ʼ
+//OpenGL初始化开始
 void SceneInit(int w,int h)
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);      // ��ɫ���� 
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);      // 黑色背景 
 	glColor3f(1.0f, 1.0f, 1.0f);
 
 	glShadeModel(GL_FLAT);
@@ -113,10 +127,10 @@ void SceneInit(int w,int h)
 	glOrtho(-50.0f, 50.0f, -50.0f, 50.0f, -1.0f, 1.0f);
 }
 
- //����������еĻ�ͼ����
+ //这里进行所有的绘图工作
 void SceneShow(GLvoid)        
 {
-	// ��ת�Ƕ�
+	// 旋转角度
 	static float fSpin = 0.0f;
 	fSpin += 2.0f;
 	if(fSpin > 360.0f)
@@ -127,16 +141,16 @@ void SceneShow(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glPushMatrix();
-	// ��ת���ε���Ҫ����
+	// 旋转矩形的主要函数
 	glRotatef(fSpin, 0.0f, 0.0f, 1.0f);
 	glRectf(-25.0, -25.0, 25.0, 25.0);
 	glPopMatrix();
 
-	// ����������
+	// 交换缓冲区
 	SwapBuffers(ghDC);
 }  
 
-// ȡ�� OpenGL ���ڳ������ǰ���ã��ͷ���Ⱦ�������豸�����Լ����մ��ھ����
+// 取消 OpenGL ，在程序结束前调用，释放渲染环境，设备环境以及最终窗口句柄。
 void DisableOpenGL()
 {
 	wglMakeCurrent( NULL, NULL );
@@ -212,7 +226,7 @@ int Game_Main(void *parms = NULL, int num_parms = 0)
 
 	SceneShow();
 
-	// ����֡��
+	// 控制帧率
 	while(GetTickCount() - dwStartTime < TIME_IN_FRAME)
 	{
 		Sleep(1);

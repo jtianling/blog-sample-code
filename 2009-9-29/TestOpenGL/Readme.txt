@@ -1,35 +1,39 @@
-// ================================================================
-//
-//  °æÈ¨ËùÓÐ(C) 2008 ¾ÅÌìÑãôá
-//  Copyright (C) 2008 JTianLing
-//
-//  ---------------------------------------------------------------
-//  ÕâÒ»³ÌÐòÊÇ×ÔÓÉÈí¼þ£¬Äã¿ÉÒÔ×ñÕÕ×ÔÓÉÈí¼þ»ù½ð»á³ö°æµÄ GNU Í¨ÓÃ¹«¹²Ðí¿É
-//  Ö¤Ìõ¿îÀ´ÐÞ¸ÄºÍÖØÐÂ·¢²¼ÕâÒ»³ÌÐò¡£»òÕßÓÃÐí¿ÉÖ¤µÄµÚ¶þ°æ£¬»òÕß£¨¸ù¾ÝÄãµÄÑ¡
-//  Ôñ£©ÓÃÈÎºÎ¸üÐÂµÄ°æ±¾¡£
-//  ·¢²¼ÕâÒ»³ÌÐòµÄÄ¿µÄÊÇÏ£ÍûËüÓÐÓÃ£¬µ«Ã»ÓÐÈÎºÎµ£±£¡£ÉõÖÁÃ»ÓÐÊÊºÏÌØ¶¨Ä¿
-//  µÄµÄÒþº¬µÄµ£±£¡£¸üÏêÏ¸µÄÇé¿öÇë²ÎÔÄ GNU Í¨ÓÃ¹«¹²Ðí¿ÉÖ¤¡£
-//  ÄãÓ¦¸ÃÒÑ¾­ºÍ³ÌÐòÒ»ÆðÊÕµ½Ò»·Ý GNU Í¨ÓÃ¹«¹²Ðí¿ÉÖ¤µÄ¸±±¾¡£Èç¹û»¹Ã»ÓÐ£¬
-//Ð´ÐÅ¸ø£º
-//    The Free Software Foundation, Inc.,  675  Mass Ave,  Cambridge,
-//    MA02139,  USA
-// ################################################################
-//  	Webs	: groups/google.com/group/jiutianfile
-//  	Blog	: blog.csdn.net/vagrxie
-//  	E-mail	: JTianLing@GMail.com
-//  	QQ	: 375454
-//
-//  »¶Ó­´ó¼ÒÔÚÉÏÊöÍøÒ³»òÕß²©¿ÍÉÏÁôÑÔ·¢ÌûÖ¸³öÆäÖÐµÄbug»ò¿ÉÒÔ¸Ä½øÖ®´¦
-//  
-//  ±¾¹¤³Ì´Ó¡¶OpenGL ±à³ÌÖ¸ÄÏ¡·£¨¡¶OpenGL Programming Guide¡·£©µÄÊ¾Àý´úÂëmvarray.c¸Ä¹ýÀ´µÄ¡£ÆäÖÐµÄºê
-//  GL_VERSION_1_3ÊÇÓÉglew¶¨ÒåÓÃÀ´±íÊ¾Ö§³ÖOpenGL1.3°æ±¾£¬ÆäÖÐµÄº¯ÊýglMultiDrawElementsEXT¾ÍÊÇWindows
-//  ±¾Éí²»Ö§³Ö£¬ÓÃÁËglewºó²ÅÄÜÊ¹ÓÃµÄOpenGLÀ©Õ¹½Ó¿Ú£¨Ê×ÏÈÒªÏÔ¿¨Ö§³Ö°¡£©¡£glutµÄÊ¹ÓÃÄÇ¾Í¸ü²»ÓÃËµÁË¡£
-//  Ìá¹©µÄÄ¿µÄÊÇÎªÁË¼ìÑéglewºÍglutµÄ°²×°
-//  ¶ÔÓ¦µÄ²©¿ÍÎÄÕÂÎª¡¶Win32 OpenGL±à³Ì(2) Ñ°ÕÒÈ±Ê§µÄOpenGLº¯Êý ¡·
-//  http://blog.csdn.net/vagrxie/archive/2009/09/29/4617556.aspx
-//
-//  ±¾¹¤³ÌÓÃGoogle Project Host±£´æ£¬ÓÃMercurial¹ÜÀí
-//  MercurialµÄÊ¹ÓÃ·½·¨¿ÉÒÔ²Î¿¼
-//  http://blog.csdn.net/vagrxie/archive/2009/09/25/4593687.aspx
-//
-// ################################################################
+/***********************************************************************
+
+  ç‰ˆæƒæ‰€æœ‰(C) 2009 ä¹å¤©é›ç¿Ž
+  Copyright (C) 2009 JTianLing
+
+  *********************************************************************
+  è¿™ä¸€ç¨‹åºæ˜¯è‡ªç”±è½¯ä»¶ï¼Œä½ å¯ä»¥éµç…§è‡ªç”±è½¯ä»¶åŸºé‡‘ä¼šå‡ºç‰ˆçš„ GNU é€šç”¨å…¬å…±è®¸å¯
+  è¯æ¡æ¬¾æ¥ä¿®æ”¹å’Œé‡æ–°å‘å¸ƒè¿™ä¸€ç¨‹åºã€‚æˆ–è€…ç”¨è®¸å¯è¯çš„ç¬¬äºŒç‰ˆï¼Œæˆ–è€…ï¼ˆæ ¹æ®ä½ çš„é€‰
+  æ‹©ï¼‰ç”¨ä»»ä½•æ›´æ–°çš„ç‰ˆæœ¬ã€‚
+  å‘å¸ƒè¿™ä¸€ç¨‹åºçš„ç›®çš„æ˜¯å¸Œæœ›å®ƒæœ‰ç”¨ï¼Œä½†æ²¡æœ‰ä»»ä½•æ‹…ä¿ã€‚ç”šè‡³æ²¡æœ‰é€‚åˆç‰¹å®šç›®
+  çš„çš„éšå«çš„æ‹…ä¿ã€‚æ›´è¯¦ç»†çš„æƒ…å†µè¯·å‚é˜… GNU é€šç”¨å…¬å…±è®¸å¯è¯ã€‚
+  ä½ åº”è¯¥å·²ç»å’Œç¨‹åºä¸€èµ·æ”¶åˆ°ä¸€ä»½ GNU é€šç”¨å…¬å…±è®¸å¯è¯çš„å‰¯æœ¬ã€‚å¦‚æžœè¿˜æ²¡æœ‰ï¼Œ
+	å†™ä¿¡ç»™ï¼š
+    The Free Software Foundation, Inc.,  675  Mass Ave,  Cambridge,
+    MA02139,  USA
+ *********************************************************************
+    æ¬¢è¿Žå¤§å®¶åœ¨ä¸‹è¿°ç½‘é¡µå‘å¸–æˆ–æ¥ä¿¡è¯´æ˜Žè®¨è®ºè¯¥è½¯ä»¶çš„BUGå’Œå¯ä»¥æ”¹è¿›ä¹‹å¤„
+
+  	Webs	: groups.google.com/group/jiutianfile
+  	Blog	: blog.csdn.net/vagrxie
+  	E-mail	: JTianLing@GMail.com
+  	QQ	: 375454
+  
+ *********************************************************************
+
+  æœ¬å·¥ç¨‹æ˜¯ä»Žã€ŠOpenGL ç¼–ç¨‹æŒ‡å—ã€‹ï¼ˆã€ŠOpenGL Programming Guideã€‹ï¼‰çš„ç¤ºä¾‹
+  ä»£ç mvarray.cæ”¹è¿‡æ¥çš„ã€‚å…¶ä¸­çš„å®GL_VERSION_1_3æ˜¯ç”±glewå®šä¹‰ç”¨æ¥è¡¨ç¤ºæ”¯
+  æŒOpenGL1.3ç‰ˆæœ¬ï¼Œå…¶ä¸­çš„å‡½æ•°glMultiDrawElementsEXTå°±æ˜¯Windows
+  æœ¬èº«ä¸æ”¯æŒï¼Œç”¨äº†glewåŽæ‰èƒ½ä½¿ç”¨çš„OpenGLæ‰©å±•æŽ¥å£ï¼ˆé¦–å…ˆè¦æ˜¾å¡æ”¯æŒå•Šï¼‰ã€‚
+  glutçš„ä½¿ç”¨é‚£å°±æ›´ä¸ç”¨è¯´äº†ã€‚æä¾›çš„ç›®çš„æ˜¯ä¸ºäº†æ£€éªŒglewå’Œglutçš„å®‰è£…
+
+  å¯¹åº”çš„åšå®¢æ–‡ç« ä¸ºã€ŠWin32 OpenGLç¼–ç¨‹(2) å¯»æ‰¾ç¼ºå¤±çš„OpenGLå‡½æ•° ã€‹
+  http://blog.csdn.net/vagrxie/archive/2009/09/29/4617556.aspx
+
+  æœ¬å·¥ç¨‹ç”¨Google Project Hostä¿å­˜ï¼Œç”¨Mercurialç®¡ç†
+  Mercurialçš„ä½¿ç”¨æ–¹æ³•å¯ä»¥å‚è€ƒ
+  http://blog.csdn.net/vagrxie/archive/2009/09/25/4593687.aspx
+
+ *******************************************************************/

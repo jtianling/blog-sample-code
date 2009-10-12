@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Copyright (c) 1993-2003, Silicon Graphics, Inc.
  * All Rights Reserved
  *
@@ -45,15 +45,13 @@
  *  This program demonstrates multiple vertex arrays,
  *  specifically the OpenGL routine glMultiDrawElements().
  */
-// ±¾Ô´´úÂë¾­¹ı¾ÅÌìÑãôá£¨JTianLing£©¸ÄĞ´ÒÔÖ§³Ö°²×°ÁËglewºóµÄWindows»·¾³¡£
+// æœ¬æºä»£ç ç»è¿‡ä¹å¤©é›ç¿ï¼ˆJTianLingï¼‰æ”¹å†™ä»¥æ”¯æŒå®‰è£…äº†glewåçš„Windowsç¯å¢ƒã€‚
 
 #include <GL/glew.h>
 #include <GL/wglew.h>
 #include <GL/glut.h>
 #include <stdio.h>
 
-#pragma comment( lib, "opengl32.lib" ) 
-#pragma comment( lib, "glu32.lib" )  
 #pragma comment( lib, "glew32.lib" )  
 #pragma comment( lib, "glew32s.lib" )  
 #pragma comment( lib, "glut32.lib" )  
@@ -107,7 +105,7 @@ void display(void)
                            indices, 2);
 
 
-   // ÉÏÃæµÄÒ»¾äÏàµ±ÓÚÏÂÃæµÄÁ½¾ä
+   // ä¸Šé¢çš„ä¸€å¥ç›¸å½“äºä¸‹é¢çš„ä¸¤å¥
    //glDrawElements(GL_LINE_STRIP, count[0], GL_UNSIGNED_BYTE, oneIndices);
    //glDrawElements(GL_LINE_STRIP, count[1], GL_UNSIGNED_BYTE, twoIndices);
 
