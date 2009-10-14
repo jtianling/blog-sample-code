@@ -76,8 +76,8 @@ HINSTANCE ghInstance; // 程序实例句柄
 HDC ghDC;					// GDI设备环境句柄
 HGLRC ghRC;           // 渲染器环境句柄
 
-// 矩形顶部的Red颜色
-GLfloat gfTopRed;
+// 矩形顶部的Green颜色
+GLfloat gfTopGreen;
 
 // 矩形底部的Red颜色
 GLfloat gfBottomRed;
@@ -120,8 +120,8 @@ void EnableOpenGL()
 void SceneInit(int w,int h)
 {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
-
-	gfTopRed = 0.0;
+	glShadeModel(GL_SMOOTH);
+	gfTopGreen = 0.0;
 	gfBottomRed = 1.0;
 
 	// 默认方向,Top增长，Bottom减少
@@ -130,20 +130,20 @@ void SceneInit(int w,int h)
 
 void IncreaseToTop()
 {
-	gfTopRed += SHADE_SPEED;
+	gfTopGreen += SHADE_SPEED;
 	gfBottomRed -= SHADE_SPEED;
 }
 
 void DecreaseToTop()
 {
-	gfTopRed -= SHADE_SPEED;
+	gfTopGreen -= SHADE_SPEED;
 	gfBottomRed += SHADE_SPEED;
 }
 
 void DrawRect()
 {
 	glBegin(GL_QUADS);	
-	glColor3f(gfTopRed, 0.0, 0.0);
+	glColor3f(0.0, gfTopGreen, 0.0);
 	glVertex3f(-0.5, -0.5, 0.0);
 	glVertex3f(0.5, -0.5, 0.0);
 
@@ -163,7 +163,7 @@ void SceneShow(GLvoid)
 	// 默认方向时
 	if(gbShadeDir)
 	{
-		if(gfTopRed <= 1.0)
+		if(gfTopGreen <= 1.0)
 		{
 			IncreaseToTop();
 		}
@@ -174,7 +174,7 @@ void SceneShow(GLvoid)
 	}
 	else
 	{
-		if(gfTopRed >= 0.0)
+		if(gfTopGreen >= 0.0)
 		{
 			DecreaseToTop();
 		}
