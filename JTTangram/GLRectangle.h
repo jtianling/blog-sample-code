@@ -49,7 +49,6 @@ public:
 		glColor4fv(mfvColor);
 		glPushMatrix();
 
-		glRotatef(mfDegree, 0.0, 0.0, 1.0);
 		glBegin(GL_QUADS);
 		glVertex3fv(fvLeftTop);
 		glVertex3fv(fvRightTop);

@@ -135,7 +135,7 @@ void SceneInit(int w,int h)
 
 	gRectangle.SetColor(1.0, 175.0/255.0, 175.0/255.0); // 唯一的正方形,不知道什么颜色
 	gRectangle.SetPos(-0.25, 0.0);
-	gRectangle.RotateTo(22.5);
+	gRectangle.RotateTo(45.0);
 
 	gTriSMid.SetColor(0.0, 1.0, 0.0);	// 中间的小三角形,绿色
 	gTriSMid.SetSize(0.5);		// 小三角形只有大的一半大
