@@ -25,4 +25,7 @@
   Mercurial的使用方法可以参考
   http://blog.csdn.net/vagrxie/archive/2009/09/25/4593687.aspx
 
+  工程文件基本由CMake管理生成,简单的办法是使用CMake GUI,简介见:
+    http://blog.csdn.net/vagrxie/archive/2009/10/30/4743484.aspx
+
  ################################################################
