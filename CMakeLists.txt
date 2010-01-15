@@ -1,0 +1,18 @@
+PROJECT( JTianLingBLog )
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+INCLUDE_DIRECTORIES(./dependes/windows/include/)
+LINK_DIRECTORIES(../dependes/windows/lib/)
+FILE(GLOB_RECURSE SRC_LIST "*.cpp")
+FOREACH(src ${SRC_LIST})
+    IF(NOT (src MATCHES ".*2009-10-20.*")) 
+        MESSAGE( ${src} Finded)
+        STRING( REGEX REPLACE ".*/(.*)\\.cpp$" "\\1" prjName ${src} )
+        MESSAGE( ${prjName} Added)
+        ADD_EXECUTABLE( ${prjName} ${src} )
+
+        IF (NOT (prjName STREQUAL mvarray) )
+            SET_TARGET_PROPERTIES(${prjName} PROPERTIES WIN32_EXECUTABLE "true")
+        ENDIF(NOT (prjName STREQUAL mvarray) )
+
+    ENDIF(NOT (src MATCHES ".*2009-10-20.*"))
+ENDFOREACH(src)
