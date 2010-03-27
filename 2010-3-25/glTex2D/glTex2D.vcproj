@@ -2,8 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="glBitmapTest"
-	ProjectGUID="{FE356DDA-E0DE-4309-AF61-95F214990F7D}"
+	Name="glTex2D"
+	ProjectGUID="{A26BF682-871C-4D4F-B513-0FE514E89125}"
+	RootNamespace="OpenGL"
+	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -16,9 +18,10 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -39,6 +42,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="../../dependes/windows/include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -52,8 +61,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../dependes/windows/lib"
 				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -79,9 +91,11 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -100,6 +114,15 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="../../dependes/windows/include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -112,6 +135,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../dependes/windows/lib"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -141,12 +171,19 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\glBitmapTest.cpp"
+				RelativePath=".\glTex2D.cpp"
 				>
 			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
